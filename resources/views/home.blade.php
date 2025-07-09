@@ -1,5 +1,6 @@
 @extends('layouts.main-layout')
 @section('content')
+
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col">
@@ -18,7 +19,6 @@
                     </div>
                 @else
                     <!-- notes are available -->
-
                     <div class="d-flex justify-content-end mb-3">
                         <a href={{ route('new') }} class="btn btn-secondary px-3">
                             <i class="fa-regular fa-pen-to-square me-2"></i>New Note
@@ -28,8 +28,8 @@
                     @foreach ($notes as $note)
                         @include('note')
                     @endforeach
-                @endif
 
+                @endif
             </div>
         </div>
     </div>

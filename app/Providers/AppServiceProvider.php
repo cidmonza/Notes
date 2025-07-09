@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Services\Operations;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -12,9 +11,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton('operations', function () {
-            return new Operations();
-        });
+        //$this->app->singleton('operations', function () {
+        //    return new Operations();
+        //});
     }
 
     /**

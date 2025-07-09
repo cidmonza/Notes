@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use App\Facades\Operations;
+use App\Services\Operations;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Support\Facades\Crypt;
 use PhpParser\Node\Stmt\TryCatch;
@@ -28,13 +28,21 @@ class MainController extends Controller
 
     public function editNote($id)
     {
-        $id = Operations::decryptId($id);
-        echo "editing note with id = $id";
+        $validId = Operations::decryptId($id);
+        if(!$validId){
+            redirect()->route('home')->withErrors("O id da nota é inválida.");
+        }else{
+            echo "editing note with id = $id";
+        }
+        
     }
 
     public function deleteNote($id)
     {
-        $id = Operations::decryptId($id);
+        $validId = Operations::decryptId($id);
+        if(!$validId){
+            redirect()->route('home')->withErrors("Erro na tentativa de deletar nota.");
+        }
         echo "deleting note with id = $id";
     }
 }
