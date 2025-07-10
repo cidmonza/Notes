@@ -68,8 +68,15 @@ class MainController extends Controller
         if(!$validId){
             return redirect()->route('home')->withErrors("O id da nota é inválida.");
         }else{
-            echo "editing note with id = $id";
+            // load note      
+            $note = Note::find($validId);
+
+            // show edit note view
+            return view('edit_note', ['note' => $note]);
         }
+    }
+
+    public function editNoteSubmit(){
         
     }
 
