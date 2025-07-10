@@ -16,6 +16,7 @@ Route::middleware([CheckIfNotLogged::class])->group(function(){
 Route::middleware([CheckIsLogged::class])->group(function() {
     Route::get('/', [MainController::class, 'index'])->name('home');
     Route::get('/newNote', [MainController::class, 'newNote'])->name('new');
+    Route::post('/newNoteSubmit', [MainController::class, 'newNoteSubmit'])->name('newNoteSubmit');
 
     // edit note 
     // O professor Spoukinthere está utilizando get para updates e deletes, mais a frente vou ver como fazer da forma correta RESTful 
