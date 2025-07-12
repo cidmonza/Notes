@@ -1,0 +1,18 @@
+sudo chown -R www-data:www-data /home/cid/Dev/Laravel/Notes/storage /home/cid/Dev/Laravel/Notes/bootstrap/cache
+sudo chmod -R 775 /home/cid/Dev/Laravel/Notes/storage /home/cid/Dev/Laravel/Notes/bootstrap/cache
+
+****************
+sudo chown -R www-data:www-data /home/cid/Dev/Laravel/Notes
+sudo chmod -R 775 /home/cid/Dev/Laravel/Notes
+
+sudo chown -R cid:cid /home/cid/Dev/Laravel/Notes/storage /home/cid/Dev/Laravel/Notes/bootstrap/cache
+
+sudo chmod -R 775 /home/cid/Dev/Laravel/Notes/storage /home/cid/Dev/Laravel/Notes/bootstrap/cache
+
+sudo chown -R cid:cid /home/cid/Dev/Laravel/Notes
+
+sudo chmod -R 775 /home/cid/Dev/Laravel/Notes
+
+************
+
+sudo chmod -R u+rwX /home/cid/Dev/Laravel/Notes

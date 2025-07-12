@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->string('username', 50)->nullable();
-            $table->string('password', 20)->nullable();
+            $table->string('password', 60)->nullable();
             $table->dateTime('last_login')->nullable();
             $table->timestamps();
             $table->softDeletes();
