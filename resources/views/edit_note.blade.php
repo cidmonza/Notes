@@ -1,11 +1,17 @@
 @extends('layouts.main-layout')
 @section('content')
+
+@php
+    use Illuminate\Support\Facades\Crypt;
+@endphp
+
+
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col">
 
             @include('top_bar')
-        
+
             <!-- label and cancel -->
             <div class="row">
                 <div class="col">
@@ -14,13 +20,14 @@
                 <div class="col text-end">
                     <a href="{{ route('home') }}" class="btn btn-outline-danger">
                         <i class="fa-solid fa-xmark"></i>
-                    </a>            
+                    </a>
                 </div>
             </div>
 
             <!-- form -->
             <form action="{{ route('editNoteSubmit', ['id' => $note->id]) }}" method="post">
                 @csrf
+                <input type="hidden" name="note_id" value="{{ Crypt::encrypt($note->id)}}">
                 <div class="row mt-3">
                     <div class="col">
                         <div class="mb-3">
@@ -46,7 +53,7 @@
                     </div>
                 </div>
             </form>
-            
+
         </div>
     </div>
 </div>
