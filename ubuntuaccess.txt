@@ -13,6 +13,9 @@ sudo chown -R cid:cid /home/cid/Dev/Laravel/Notes
 
 sudo chmod -R 775 /home/cid/Dev/Laravel/Notes
 
+sudo chown -R cid:www-data /home/cid/Dev/Laravel/Notes
+sudo chmod -R 775 /home/cid/Dev/Laravel/Notes
+
 ************
 
 sudo chmod -R u+rwX /home/cid/Dev/Laravel/Notes
