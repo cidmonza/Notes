@@ -6,9 +6,6 @@ use App\Note;
 use Illuminate\Http\Request;
 use App\User;
 use App\Services\Operations;
-use Illuminate\Contracts\Encryption\DecryptException;
-use Illuminate\Support\Facades\Crypt;
-use PhpParser\Node\Stmt\TryCatch;
 
 class MainController extends Controller
 {
@@ -16,7 +13,7 @@ class MainController extends Controller
     {
         // load user's notes
         $id = session('user.id');
-        $notes = User::find($id)->notes()->get()->toArray();
+        $notes = User::find($id)->notes()->whereNull('deleted_at')->get()->toArray();
 
         //show home view
         return view('home', ['notes' => $notes]);
@@ -122,6 +119,33 @@ class MainController extends Controller
             // É importante sempre utilizar return antes do redirect, mesmo que funcione sem o "return", para que middlewares etc funcionem
             return redirect()->route('home')->withErrors("Erro na tentativa de deletar nota.");
         }
-        echo "deleting note with id = $id";
+
+        // load note
+
+        $note = Note::find($validId);
+
+        // go to delete note confirm view
+
+        return view('delete_note_confirm', ['note' => $note]);
+    }
+
+    public function deleteNoteConfirm($id){
+
+        $validId = Operations::decryptId($id);
+        if(!$validId){
+            return redirect()->route('home')->withErrors("Erro na tentativa de deletar a nota");
+        }
+
+        $note = Note::find($validId);
+
+        // Hard delete:
+        //$note->delete();
+
+        // Soft delete:
+
+        $note->deleted_at = date('Y-m-d, H:i:s');
+        $note->save();
+
+        return redirect()->route('home');
     }
 }

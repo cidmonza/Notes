@@ -21,16 +21,15 @@ Route::middleware([CheckIsLogged::class])->group(function() {
     Route::get('/newNote', [MainController::class, 'newNote'])->name('new');
     Route::post('/newNoteSubmit', [MainController::class, 'newNoteSubmit'])->name('newNoteSubmit');
 
-    // edit note 
-    // O professor Spowkinthere está utilizando get para put (update) e delete, mais a frente vou ver como fazer da forma correta RESTful 
+    // edit note
+    // O professor Spowkinthere está utilizando get para put (update) e delete, mais a frente vou ver como fazer da forma correta RESTful
     Route::get('/editNote/{id}', [MainController::class, 'editNote'])->name('edit');
     Route::post('/editNoteSubmit/{id}', [MainController::class, 'editNoteSubmit'])->name('editNoteSubmit');
 
     // delete note
     Route::get('/deleteNote/{id}', [MainController::class, 'deleteNote'])->name('delete');
+    Route::get('/deleteNoteConfirm/{id}', [MainController::class, 'deleteNoteConfirm'])->name('deleteConfirm');
 
     //logout
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
-
-
