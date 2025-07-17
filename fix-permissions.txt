@@ -11,3 +11,6 @@ php artisan cache:clear
 php artisan route:clear
 php artisan view:clear
 php artisan optimize:clear
+
+// fonte fira code:
+https://github.com/tonsky/FiraCode
