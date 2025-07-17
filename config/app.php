@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => env('APP_TIMEZONE', 'UTC'),
+    'timezone' => 'America/Sao_Paulo',
 
     /*
     |--------------------------------------------------------------------------
@@ -107,9 +107,7 @@ return [
         ),
     ],
 
-    'aliases' => [
-        'Operations' => App\Facades\Operations::class,
-    ],
+    'aliases' => [],
 
     /*
     |--------------------------------------------------------------------------
